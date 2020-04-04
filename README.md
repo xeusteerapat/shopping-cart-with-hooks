@@ -1,3 +1,10 @@
+# Not finish just yet
+
+## Todo
+
+- I have to correct update product qty in cart.
+- Calculate total price.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
