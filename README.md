@@ -2,8 +2,9 @@
 
 ## Todo
 
-- I have to correct update product qty in cart.
-- Calculate total price.
+- ~~I have to correct update product qty in cart.~~
+- ~~Calculate total price.~~
+- Add more logic to check existing product in cart.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
