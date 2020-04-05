@@ -95,7 +95,9 @@ const App = () => {
               decreaseQty={decreaseQty}
             >
               <button onClick={() => increaseQty(item.id)}>+</button>
-              <button onClick={() => decreaseQty(item.id)}>-</button>
+              <button diabled="true" onClick={() => decreaseQty(item.id)}>
+                -
+              </button>
             </Cart>
           ))}
         </div>

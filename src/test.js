@@ -33,4 +33,5 @@ const updateQty = (id) => {
 
 cart = addToCart(2);
 cart = addToCart(2);
+cart = updateQty(2);
 console.log(cart);
