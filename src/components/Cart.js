@@ -1,8 +1,6 @@
 import React from 'react';
-import useUpdateQty from '../hooks/useUpdateQty';
 
-const Cart = ({ id, name, price, image, qty }) => {
-  const [count, increment, decrement] = useUpdateQty(qty);
+const Cart = ({ id, name, price, image, qty, increaseQty, decreaseQty }) => {
   return (
     <div>
       <ul>
@@ -12,11 +10,11 @@ const Cart = ({ id, name, price, image, qty }) => {
           {name}
           <br />${price}
           <br />
-          In your cart: {count}
-          <button onClick={() => increment(qty)}>+</button>
-          <button onClick={() => decrement(qty)}>-</button>
+          In your cart: {qty}
+          <button onClick={() => increaseQty(id)}>+</button>
+          <button onClick={() => decreaseQty(id)}>-</button>
           <br />
-          Sub total: {price * count}
+          Sub total: {price * qty}
         </li>
       </ul>
     </div>

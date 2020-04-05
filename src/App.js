@@ -11,6 +11,7 @@ const App = () => {
       price: 10,
       image:
         'https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5932/9781593279509.jpg',
+      qty: 1,
     },
     {
       id: 2,
@@ -18,6 +19,7 @@ const App = () => {
       price: 20,
       image:
         'https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5965/9780596517748.jpg',
+      qty: 1,
     },
     {
       id: 3,
@@ -25,20 +27,35 @@ const App = () => {
       price: 30,
       image:
         'https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/6172/9781617292859.jpg',
+      qty: 1,
     },
   ];
 
   const [products] = useState(initialProducts);
   const [cart, setCart] = useState([]);
-  const [quantity] = useState(1);
 
   const addToCart = (id) => {
-    const singleProduct = products.find((product) => product.id === id);
-    const updatedCart = [
-      ...cart,
-      Object.assign({ qty: quantity }, singleProduct),
-    ];
+    const selectedProduct = products.find((product) => product.id === id);
+    const updatedCart = [...cart, selectedProduct];
     setCart(updatedCart);
+  };
+
+  const increaseQty = (id) => {
+    const updateQty = cart.map((item) =>
+      item.id === id ? { ...item, qty: item.qty + 1 } : item
+    );
+    setCart(updateQty);
+  };
+
+  const decreaseQty = (id) => {
+    const updateQty = cart.map((item) =>
+      item.id === id ? { ...item, qty: item.qty - 1 } : item
+    );
+    setCart(updateQty);
+  };
+
+  const calculatePrice = () => {
+    return cart.reduce((price, item) => price + item.price * item.qty, 0);
   };
 
   return (
@@ -59,7 +76,8 @@ const App = () => {
           ))}
         </div>
         <div className="column">
-          <h1>Cart</h1>
+          <h1>Your cart</h1>
+          <h2>Total Price: ${calculatePrice()}</h2>
           {cart.map((item) => (
             <Cart
               id={item.id}
@@ -68,6 +86,8 @@ const App = () => {
               image={item.image}
               price={item.price}
               qty={item.qty}
+              increaseQty={increaseQty}
+              decreaseQty={decreaseQty}
             />
           ))}
         </div>
