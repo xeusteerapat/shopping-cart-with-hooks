@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({ id, name, price, image, qty, increaseQty, decreaseQty }) => {
+const Cart = ({ id, name, price, image, qty, children }) => {
   return (
     <div>
       <ul>
@@ -11,8 +11,7 @@ const Cart = ({ id, name, price, image, qty, increaseQty, decreaseQty }) => {
           <br />${price}
           <br />
           In your cart: {qty}
-          <button onClick={() => increaseQty(id)}>+</button>
-          <button onClick={() => decreaseQty(id)}>-</button>
+          {children}
           <br />
           Sub total: {price * qty}
         </li>

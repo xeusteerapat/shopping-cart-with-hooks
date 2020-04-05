@@ -36,8 +36,13 @@ const App = () => {
 
   const addToCart = (id) => {
     const selectedProduct = products.find((product) => product.id === id);
-    const updatedCart = [...cart, selectedProduct];
-    setCart(updatedCart);
+    if (!cart.some((item) => item.id === selectedProduct.id)) {
+      const updatedCart = [...cart, selectedProduct];
+      setCart(updatedCart);
+    } else {
+      alert('This product is already in cart, please update qty');
+      return;
+    }
   };
 
   const increaseQty = (id) => {
@@ -88,7 +93,10 @@ const App = () => {
               qty={item.qty}
               increaseQty={increaseQty}
               decreaseQty={decreaseQty}
-            />
+            >
+              <button onClick={() => increaseQty(item.id)}>+</button>
+              <button onClick={() => decreaseQty(item.id)}>-</button>
+            </Cart>
           ))}
         </div>
       </div>

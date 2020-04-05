@@ -4,7 +4,8 @@
 
 - ~~I have to correct update product qty in cart.~~
 - ~~Calculate total price.~~
-- Add more logic to check existing product in cart.
+- ~~Avoid adding existing product in cart.~~
+- Diable button when quantity of item in cart equal 1.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
